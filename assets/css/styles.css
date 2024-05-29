@@ -1,0 +1,565 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(230, 75%, 56%);
+  --secund-color: #FFC700;
+  --title-color: hsl(230, 75%, 15%);
+  --text-color: hsl(230, 12%, 40%);
+  --body-color: hsl(230, 100%, 98%);
+  --container-color: hsl(230, 100%, 97%);
+  --border-color: hsl(230, 25%, 80%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Syne", sans-serif;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: .938rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-fixed: 100;
+  --z-modal: 1000;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1023px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h2{
+  text-align: center;
+  margin-bottom: 0.75em;
+  margin-top: 0.75em;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+.section{
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+.section__parrafo{
+  text-align: center;
+}
+
+
+.main {
+  position: relative;
+}
+
+
+.search,
+.login {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-modal);
+  background-color: hsla(230, 75%, 15%, .1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px); /* For safari */
+  padding: 8rem 1.5rem 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s;
+}
+
+.search__close,
+.login__close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--body-color);
+  box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
+  z-index: var(--z-fixed);
+}
+
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  transition: color .4s;
+  width: 80px;
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.nav__search, 
+.nav__login, 
+.nav__toggle, 
+.nav__close {
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+  transition: color .4s;
+}
+
+:is(.nav__logo, .nav__search, .nav__login, .nav__toggle, .nav__link):hover {
+  color: var(--first-color);
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1023px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    background-color: var(--body-color);
+    box-shadow: 0 8px 16px hsla(230, 75%, 32%, .15);
+    width: 100%;
+    padding-block: 4.5rem 4rem;
+    transition: top .4s;
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+  text-align: center;
+}
+
+.nav__link {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  transition: color .4s;
+}
+
+.nav__close {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.5rem;
+}
+
+/* Show menu */
+.show-menu {
+  top: 0;
+}
+
+/*=============== HOME ===============*/
+.home{
+  background-image: url('/assets/img/vizcaya__banner.jpg');
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+
+}
+
+/*=============== ABOUT ===============*/
+.about__image{
+  width: 70%;
+  margin: 2em auto;
+  
+  img{
+    border-radius: 50%;
+  }
+}
+.contenedor__cirles{
+
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  margin: 20px;
+
+}
+.contenedor__item{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .item__circle{
+    width: 70px;
+    height: 70px;
+    display: block;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secund-color);
+    font-size: 22px;
+    font-weight: 700;
+  }
+}
+
+/*=============== EXPERIENCIA ===============*/
+.experiencias{
+  background-color: #dbdbdb;
+  padding-top: 2em ;
+  padding-bottom: 2em;
+}
+
+.contenedor__companies{
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  justify-items: center
+}
+
+
+
+
+/*=============== CUALIFICACIONES ===============*/
+
+.contenedor__cards{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 1em;
+}
+
+.cali__card{
+  width: 100%;
+  height: auto;
+  background-color: #EEEEEE;
+  padding: 1.5em;
+  border-radius: 20px;
+}
+
+.cali__title{
+  margin-top: 1em;
+}
+.cali__hr{
+  width: 50%;
+}
+.cali__parrafo{
+  margin: 1em auto;
+}
+
+
+
+/*=============== RESUMEN ===============*/
+.resumen{
+  background-image: url('/assets/img/resumen_bg.png');
+  background-size: cover;
+  background-position: center;
+  color: #c6c6c6;
+  padding: 4em 2em;
+}
+.contenedor__resumenes{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+}
+
+.resumen__title{
+ text-align: center;
+ font-size: 20px;
+}
+.resumen__hr{
+  width: 60%;
+  margin: 0.5em auto;
+  border-color: #FFC700;
+}
+.resumen__parrafo{
+  text-align: center;
+  text-transform: lowercase;
+}
+
+/*=============== CUALIFICACIONES ===============*/
+.services__parrafo{
+  text-align: center;
+}
+
+
+/*=============== CONTACT ===============*/
+.contenedor__contact{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3em;
+  max-width: 1000px;
+}
+#form__data{
+  background-color: #d8d8d8;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em 2em;
+  .input__form{
+    height: 25px;
+    width: 250px;
+    color: var(--text-color);
+    padding-left: 3px;
+  }
+}
+.textarea{
+  width: 250px;
+  height: 110px;
+  color: var(--text-color);
+  font-family: inherit;
+}
+.label__form{
+  margin-top: 1em;
+}
+.form__btn{
+  margin: 1em;
+  width: 80px;
+  height: 40px;
+  display: block;
+  border-radius: 15px;
+  color: #C16464;
+  &:hover{
+    color: #ab3d3d;
+    border: 1px solid #ab3d3d;
+  }
+}
+
+.form__img{
+  img{
+    border-radius: 20px;
+  }
+}
+
+
+/*=============== FOOTER ===============*/
+.footer{
+  background-color: #434343;
+  color: #fff;
+  padding: 4em;
+  margin-bottom: 0;
+}
+.contenedor__footer{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3em;
+  text-align: center;
+}
+.footer__card{
+  img{
+    width: 200px;
+  }
+}
+.footer__enlaces{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  a{
+    color: #fff;
+    margin-top: 10px;
+  }
+}
+.social{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1em;
+}
+.facebook{
+  margin-top: 10px;
+}
+.footer__icon{
+  width: 20px !important;
+  margin-right: 5px;
+}
+.personales{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For medium devices */
+@media screen and (min-width: 576px) {
+
+/*=============== HOME ===============*/
+.home{
+  height: 500px;
+
+}
+
+
+
+/*=============== ABOUT ===============*/
+  .contenedor__about{
+    margin-top: 7em;
+  }
+  .about__image{
+    width: 250px
+  }
+
+/*=============== EXPERIENCIA ===============*/
+  
+  .contenedor__companies, .contenedor__cards, .contenedor__resumenes{
+    margin-top: 2em;
+    grid-template-columns: 1fr 1fr;
+  }
+
+
+
+
+}
+
+/* For large devices */
+@media screen and (min-width: 1023px) {
+  .section{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+    column-gap: 3rem;
+  }
+  .nav__logo{
+    width: 130px;
+  }
+  .nav__close, 
+  .nav__toggle {
+    display: none;
+  }
+  .nav__menu {
+    margin-left: auto;
+  }
+  .nav__list {
+    flex-direction: row;
+    column-gap: 3rem;
+  }
+
+  /*=============== HOME ===============*/
+  .home{
+    height: 650px;
+
+  }
+
+  /*=============== ABOUT ===============*/
+  .contenedor__about {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  /*=============== CONTACT ===============*/
+
+  .contenedor__resumenes{
+    height: 400px;
+    margin-top: 0;
+    justify-items: center;
+    align-items: center
+  
+  }
+
+  /*=============== CONTACT ===============*/
+  .contenedor__contact{
+    grid-template-columns: 1fr 1fr;
+    
+  }
+  
+  /*=============== FOOTER ===============*/
+  .footer{
+    margin-bottom: 0;
+  }
+  .contenedor__footer{
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    
+  }
+
+
+
+
+
+/*=============== EXPERIENCIA ===============*/
+.contenedor__companies, .contenedor__cards{
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+}
+
+
+
+
+
+@media screen and (min-width: 1150px) {
+  .container {
+    margin-inline: auto;
+  }
+
+    /*=============== HOME ===============*/
+    .home{
+      height: 1000px;
+    }
+}
